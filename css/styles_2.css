@@ -1,0 +1,199 @@
+/* ===== General ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(15deg, #111, #222, #111, #222);
+  background-size: 400% 400%;
+  color: #eee;
+  line-height: 1.6;
+  animation: gradientBG 15s ease infinite;
+  overflow-x: hidden;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ===== Header ===== */
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(17, 17, 17, 0.85);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  backdrop-filter: blur(6px);
+  transition: background 0.3s ease;
+}
+
+.header:hover {
+  background: rgba(17, 17, 17, 0.95);
+}
+
+.nav a {
+  color: #0ff;
+  margin-left: 20px;
+  position: relative;
+  font-weight: 500;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+.nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #0ff;
+  left: 0;
+  bottom: -4px;
+  transition: 0.3s;
+}
+.nav a:hover::after {
+  width: 100%;
+}
+.nav a:hover {
+  color: #fff;
+}
+
+/* ===== Hero ===== */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-text h1 {
+  font-size: 2.8rem;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 0.15em solid #0ff;
+  animation: typing 2.5s steps(30, end), blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes blink {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #0ff;
+  }
+}
+
+/* ===== Secciones ===== */
+.section {
+  max-width: 1000px;
+  margin: 80px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  position: relative;
+}
+.section h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: #0ff;
+  margin: 10px auto 0;
+}
+
+/* ===== Tarjetas ===== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.card {
+  background: rgba(28, 28, 28, 0.85);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.05);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+.card:hover {
+  transform: translateY(-10px) rotate(-1deg) scale(1.02);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+}
+
+/* ===== Fade-in scroll ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Footer ===== */
+.footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 0.8rem;
+  color: #777;
+  margin-top: 50px;
+}
+
+.contact {
+  text-decoration: none;
+}
+
+/* ===== Responsive ===== */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    flex-direction: column;
+    background: #111;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 20px;
+  }
+  .nav.active {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+  }
+}
